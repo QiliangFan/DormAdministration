@@ -2,33 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3e70bcd-e5fe-421c-941e-12b38edc7251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/DormAdministration.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vagrant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DDL/delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DDL/insert.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DDL/query.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyWidgetSelf/Button.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyWidgetSelf/Window.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/buttonExit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/buttonLogin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/buttonLogupTea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/loginWindow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/loginWindow2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/logup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/returnFromLogin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyWidgetSelf/subWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DDL/insert.py" beforeDir="false" afterPath="$PROJECT_DIR$/DDL/insert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DDL/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/DDL/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyWidgetSelf/Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyWidgetSelf/Window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/mainwindow.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/mainwindow.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +57,27 @@
         <item name="DormAdmistration: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="building: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DormAdmistration@106.14.142.29" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DormAdmistration: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="manager: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DormAdmistration@106.14.142.29" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DormAdmistration: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="room: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="DormAdmistration@106.14.142.29" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DormAdmistration: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="student: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -85,7 +86,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state>
               <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -95,79 +96,131 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Window.py">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="207">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
               <folding>
-                <element signature="e#211#3752#0" />
-                <element signature="e#252#2771#0" />
-                <element signature="e#2809#2813#0" />
-                <element signature="e#2853#3471#0" />
-                <element signature="e#3520#3624#0" />
-                <element signature="e#3673#3752#0" />
-                <element signature="e#3797#7432#0" />
-                <element signature="e#3838#5888#0" />
-                <element signature="e#5926#7151#0" />
-                <element signature="e#7200#7304#0" />
-                <element signature="e#7353#7432#0" />
-                <element signature="e#7479#10462#0" />
-                <element signature="e#7520#9728#0" />
-                <element signature="e#9766#9969#0" />
-                <element signature="e#10018#10122#0" />
-                <element signature="e#10154#10462#0" />
-                <element signature="e#10266#10424#0" />
-                <element signature="e#10508#13491#0" />
-                <element signature="e#10549#12756#0" />
-                <element signature="e#12806#12910#0" />
-                <element signature="e#12947#13150#0" />
-                <element signature="e#13183#13491#0" />
-                <element signature="e#13295#13453#0" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DDL/account.py">
+        <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="1150">
+              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#318#638#0" />
+                <element signature="e#674#1098#0" />
+                <element signature="e#1390#1574#0" />
+                <element signature="e#1222#1326#0" />
+                <element signature="e#1365#1369#0" />
+                <element signature="e#1412#1432#0" />
+                <element signature="e#1741#2568#0" />
+                <element signature="e#1782#1903#0" />
+                <element signature="e#1938#2362#0" />
+                <element signature="e#2401#2505#0" />
+                <element signature="e#2548#2568#0" />
+                <element signature="e#2612#7028#0" />
+                <element signature="e#2681#5250#0" />
+                <element signature="e#5289#5388#0" />
+                <element signature="e#5428#5908#0" />
+                <element signature="e#5957#6061#0" />
+                <element signature="e#6110#6189#0" />
+                <element signature="e#6220#6265#0" />
+                <element signature="e#6297#7028#0" />
+                <element signature="e#6572#6772#0" />
+                <element signature="e#6799#7028#0" />
+                <element signature="e#7073#11559#0" />
+                <element signature="e#7114#9223#0" />
+                <element signature="e#9261#10476#0" />
+                <element signature="e#10525#10629#0" />
+                <element signature="e#10678#10757#0" />
+                <element signature="e#10788#10833#0" />
+                <element signature="e#10865#11559#0" />
+                <element signature="e#11140#11340#0" />
+                <element signature="e#11367#11559#0" />
+                <element signature="e#11606#15010#0" />
+                <element signature="e#11675#14047#0" />
+                <element signature="e#14084#14124#0" />
+                <element signature="e#14173#14277#0" />
+                <element signature="e#14309#15010#0" />
+                <element signature="e#14544#14798#0" />
+                <element signature="e#14834#15010#0" />
+                <element signature="e#15057#18446#0" />
+                <element signature="e#15126#17496#0" />
+                <element signature="e#17545#17649#0" />
+                <element signature="e#17686#17726#0" />
+                <element signature="e#17758#18446#0" />
+                <element signature="e#17993#18241#0" />
+                <element signature="e#18276#18446#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyWidgetSelf/subWindow.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="202" column="21" selection-start-line="202" selection-start-column="21" selection-end-line="202" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#204#2026#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DDL/delete.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main.py">
+        <entry file="file://$PROJECT_DIR$/DDL/query.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="392">
+              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://a80e0988-3ba6-45bd-8e42-43c093b91a71/schema/DormAdmistration/table/account">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="bb4abdd3-5dfb-4068-b4c1-787dfd654d0d">
-              <filtering />
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a80e0988-3ba6-45bd-8e42-43c093b91a71/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="23" selection-end-line="1" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Button.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="155" column="75" selection-start-line="155" selection-start-column="75" selection-end-line="155" selection-end-column="75" />
+            <state relative-caret-position="276">
+              <caret line="68" column="79" selection-start-line="68" selection-start-column="79" selection-end-line="68" selection-end-column="79" />
               <folding>
                 <element signature="e#131#695#0" />
                 <element signature="e#172#502#0" />
@@ -190,23 +243,11 @@
                 <element signature="e#3980#4632#0" />
                 <element signature="e#4021#4439#0" />
                 <element signature="e#4488#4632#0" />
+                <element signature="e#4679#5192#0" />
+                <element signature="e#5239#5752#0" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DDL/query.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/image/submitButton.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -222,6 +263,7 @@
     <findStrings>
       <find>_helpButton</find>
       <find>logupbutton</find>
+      <find>stuOperate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -237,18 +279,21 @@
         <option value="$PROJECT_DIR$/MainWindow.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/MyWidgetSelf/Button.py" />
-        <option value="$PROJECT_DIR$/DDL/account.py" />
-        <option value="$PROJECT_DIR$/DDL/query.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/DDL/account.py" />
+        <option value="$PROJECT_DIR$/DDL/insert.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a80e0988-3ba6-45bd-8e42-43c093b91a71/console.sql" />
+        <option value="$PROJECT_DIR$/DDL/query.py" />
         <option value="$PROJECT_DIR$/MyWidgetSelf/Window.py" />
+        <option value="$PROJECT_DIR$/MyWidgetSelf/subWindow.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-20" />
-    <option name="y" value="55" />
-    <option name="width" value="1940" />
-    <option name="height" value="1060" />
+    <option name="x" value="952" />
+    <option name="y" value="37" />
+    <option name="width" value="977" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -256,6 +301,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,11 +319,21 @@
               <item name="DormAdministration" type="462c0819:PsiDirectoryNode" />
               <item name="MyWidgetSelf" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DormAdministration" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DormAdministration" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DormAdministration" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DormAdministration" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -412,24 +468,26 @@
       <workItem from="1558849254936" duration="7321000" />
       <workItem from="1558858680911" duration="1821000" />
       <workItem from="1558866462056" duration="12799000" />
-      <workItem from="1558883018987" duration="812000" />
+      <workItem from="1558883018987" duration="2049000" />
+      <workItem from="1558949459099" duration="14839000" />
+      <workItem from="1558964636967" duration="11642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52571000" />
+    <option name="totallyTimeSpent" value="80289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4979592" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4886598" weight="0.5006519" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Database" order="3" sideWeight="0.5020408" side_tool="true" visible="true" weight="0.25" />
+      <window_info id="Database" order="3" sideWeight="0.5113402" side_tool="true" weight="0.5006519" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49609375" weight="0.3292517" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49609375" visible="true" weight="0.33197278" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,11 +495,11 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50390625" side_tool="true" weight="0.3292517" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026042" side_tool="true" weight="0.3292517" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32971507" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.3292517" />
+      <window_info anchor="bottom" id="Database Console" order="14" sideWeight="0.49739584" weight="0.3292517" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -449,12 +507,13 @@
       <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="4" side_tool="true" visible="true" weight="0.3294271" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4886598" visible="true" weight="0.5006519" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Database" order="3" sideWeight="0.5113402" side_tool="true" visible="true" weight="0.5006519" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49609375" visible="true" weight="0.3292517" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49609375" visible="true" weight="0.33287483" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -462,16 +521,16 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50390625" side_tool="true" visible="true" weight="0.3292517" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026042" side_tool="true" weight="0.3292517" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32971507" />
+      <window_info anchor="bottom" id="Database Console" order="14" sideWeight="0.49739584" weight="0.3292517" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3294271" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" side_tool="true" visible="true" weight="0.3294271" />
+      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="4" side_tool="true" visible="true" weight="0.3294271" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,13 +539,10 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DormAdministration$test.coverage" NAME="test Coverage Results" MODIFIED="1558871734951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormAdministration$MainWindow.coverage" NAME="Main Coverage Results" MODIFIED="1558265984069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DormAdministration$Main.coverage" NAME="Main Coverage Results" MODIFIED="1558878623989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DormAdministration$Main.coverage" NAME="Main Coverage Results" MODIFIED="1558976459191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormAdministration$account.coverage" NAME="account Coverage Results" MODIFIED="1558877400668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DDL" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DDL/insert.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/-665143040/PyQt5/QtWidgets/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-276" />
@@ -554,16 +610,6 @@
     <entry file="file://$PROJECT_DIR$/src/image/buttonExit.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/image/buttonLogupTea.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -580,95 +626,60 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/image/loginWidget.jpg" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a80e0988-3ba6-45bd-8e42-43c093b91a71/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/image/logupWidget.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/image/submitButton.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/DDL/account.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+    <entry file="das://a80e0988-3ba6-45bd-8e42-43c093b91a71/schema/DormAdmistration/table/building">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="667a5b73-9492-4c1d-9ca1-0e58107a375f">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DDL/delete.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/image/logupWidget.jpg">
+    <entry file="file://$PROJECT_DIR$/src/image/mainwindow.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="das://a80e0988-3ba6-45bd-8e42-43c093b91a71/schema/DormAdmistration/table/account">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="bb4abdd3-5dfb-4068-b4c1-787dfd654d0d">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/image/submitButton.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DDL/query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state projectRestartId="667a5b73-9492-4c1d-9ca1-0e58107a375f">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="231">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Window.py">
+    <entry file="file://$PROJECT_DIR$/DDL/account.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding>
-            <element signature="e#211#3752#0" />
-            <element signature="e#252#2771#0" />
-            <element signature="e#2809#2813#0" />
-            <element signature="e#2853#3471#0" />
-            <element signature="e#3520#3624#0" />
-            <element signature="e#3673#3752#0" />
-            <element signature="e#3797#7432#0" />
-            <element signature="e#3838#5888#0" />
-            <element signature="e#5926#7151#0" />
-            <element signature="e#7200#7304#0" />
-            <element signature="e#7353#7432#0" />
-            <element signature="e#7479#10462#0" />
-            <element signature="e#7520#9728#0" />
-            <element signature="e#9766#9969#0" />
-            <element signature="e#10018#10122#0" />
-            <element signature="e#10154#10462#0" />
-            <element signature="e#10266#10424#0" />
-            <element signature="e#10508#13491#0" />
-            <element signature="e#10549#12756#0" />
-            <element signature="e#12806#12910#0" />
-            <element signature="e#12947#13150#0" />
-            <element signature="e#13183#13491#0" />
-            <element signature="e#13295#13453#0" />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Button.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="155" column="75" selection-start-line="155" selection-start-column="75" selection-end-line="155" selection-end-column="75" />
+        <state relative-caret-position="276">
+          <caret line="68" column="79" selection-start-line="68" selection-start-column="79" selection-end-line="68" selection-end-column="79" />
           <folding>
             <element signature="e#131#695#0" />
             <element signature="e#172#502#0" />
@@ -691,6 +702,127 @@
             <element signature="e#3980#4632#0" />
             <element signature="e#4021#4439#0" />
             <element signature="e#4488#4632#0" />
+            <element signature="e#4679#5192#0" />
+            <element signature="e#5239#5752#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a80e0988-3ba6-45bd-8e42-43c093b91a71/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="23" selection-end-line="1" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DDL/insert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DDL/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyWidgetSelf/Window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1150">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#318#638#0" />
+            <element signature="e#674#1098#0" />
+            <element signature="e#1390#1574#0" />
+            <element signature="e#1222#1326#0" />
+            <element signature="e#1365#1369#0" />
+            <element signature="e#1412#1432#0" />
+            <element signature="e#1741#2568#0" />
+            <element signature="e#1782#1903#0" />
+            <element signature="e#1938#2362#0" />
+            <element signature="e#2401#2505#0" />
+            <element signature="e#2548#2568#0" />
+            <element signature="e#2612#7028#0" />
+            <element signature="e#2681#5250#0" />
+            <element signature="e#5289#5388#0" />
+            <element signature="e#5428#5908#0" />
+            <element signature="e#5957#6061#0" />
+            <element signature="e#6110#6189#0" />
+            <element signature="e#6220#6265#0" />
+            <element signature="e#6297#7028#0" />
+            <element signature="e#6572#6772#0" />
+            <element signature="e#6799#7028#0" />
+            <element signature="e#7073#11559#0" />
+            <element signature="e#7114#9223#0" />
+            <element signature="e#9261#10476#0" />
+            <element signature="e#10525#10629#0" />
+            <element signature="e#10678#10757#0" />
+            <element signature="e#10788#10833#0" />
+            <element signature="e#10865#11559#0" />
+            <element signature="e#11140#11340#0" />
+            <element signature="e#11367#11559#0" />
+            <element signature="e#11606#15010#0" />
+            <element signature="e#11675#14047#0" />
+            <element signature="e#14084#14124#0" />
+            <element signature="e#14173#14277#0" />
+            <element signature="e#14309#15010#0" />
+            <element signature="e#14544#14798#0" />
+            <element signature="e#14834#15010#0" />
+            <element signature="e#15057#18446#0" />
+            <element signature="e#15126#17496#0" />
+            <element signature="e#17545#17649#0" />
+            <element signature="e#17686#17726#0" />
+            <element signature="e#17758#18446#0" />
+            <element signature="e#17993#18241#0" />
+            <element signature="e#18276#18446#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DDL/delete.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyWidgetSelf/subWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="202" column="21" selection-start-line="202" selection-start-column="21" selection-end-line="202" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#204#2026#0" />
           </folding>
         </state>
       </provider>

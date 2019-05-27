@@ -7,7 +7,6 @@ def main():
     app = QApplication(sys.argv)
     win=MainWindow.chooseWindow()
     win.show()
-    db.close()
     return app.exec_()
 
 
