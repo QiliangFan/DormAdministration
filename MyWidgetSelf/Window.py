@@ -7,27 +7,27 @@ from DDL.query import *
 from DDL.insert import *
 from MyWidgetSelf.subWindow import *
 import sys
+
+
 # 学生操作界面
 class stuWindow(QWidget):
-    def __init__(self,account, parent=None):
+    def __init__(self, account, parent=None):
         super(stuWindow, self).__init__(parent)
         self.pix = QPixmap("./src/image/stuWindow.png")
         self.setWindow()
-        self.account=account
-        self.first=firstWindow(self.account,self)
-        self.second=secondWindow(self.account,self)
+        self.account = account
+        self.first = firstWindow(self.account, self)
+        self.second = secondWindow(self.account, self)
         self.second.hide()
-        self.third=thirdWindow(self.account,self)
+        self.third = thirdWindow(self.account, self)
         self.third.hide()
-        self.forth=forthWindow(self.account,self)
+        self.forth = forthWindow(self.account, self)
         self.forth.hide()
         self.account_label = QLabel(self)
         self.iniButton()
         self.initSignalSlot()
         self.iniWindow()
         self.iniLabel()
-
-
 
     def setWindow(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -40,18 +40,21 @@ class stuWindow(QWidget):
                          self.height())
 
     def iniWindow(self):
-        self.first.setGeometry(300,100,900,800)
-        self.second.setGeometry(300,100,900,800)
-        self.third.setGeometry(300,100,900,800)
-        self.forth.setGeometry(300,100,900,800)
+        self.first.setGeometry(300, 100, 900, 800)
+        self.second.setGeometry(300, 100, 900, 800)
+        self.third.setGeometry(300, 100, 900, 800)
+        self.forth.setGeometry(300, 100, 900, 800)
 
     def paintEvent(self, QPaintEvent):
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
+
     def initSignalSlot(self):
         pass
-    def getAccount(self,account):
-        self.account=account
+
+    def getAccount(self, account):
+        self.account = account
+
     def iniLabel(self):
         f = QFont()
         f.setBold(True)
@@ -59,15 +62,16 @@ class stuWindow(QWidget):
         self.account_label.setText("%s" % (self.account,))
         self.account_label.setGeometry(950, 11, 200, 50)
         self.account_label.setVisible(True)
+
     def iniButton(self):
-        self.firstButton=QPushButton(self)
-        self.secondButton=QPushButton(self)
-        self.thirdButton=QPushButton(self)
-        self.forthButton=QPushButton(self)
-        self.firstButton.setGeometry(50,110,200,40)
-        self.secondButton.setGeometry(50,210,200,40)
-        self.thirdButton.setGeometry(50,260,200,40)
-        self.forthButton.setGeometry(50,310,200,40)
+        self.firstButton = QPushButton(self)
+        self.secondButton = QPushButton(self)
+        self.thirdButton = QPushButton(self)
+        self.forthButton = QPushButton(self)
+        self.firstButton.setGeometry(50, 110, 200, 40)
+        self.secondButton.setGeometry(50, 210, 200, 40)
+        self.thirdButton.setGeometry(50, 260, 200, 40)
+        self.forthButton.setGeometry(50, 310, 200, 40)
         self.firstButton.setStyleSheet("background:transparent;")
         self.secondButton.setStyleSheet("background:transparent;")
         self.thirdButton.setStyleSheet("background:transparent;")
@@ -98,20 +102,38 @@ class stuWindow(QWidget):
         self.forthButton.clicked.connect(self.third.hide)
         self.forthButton.clicked.connect(self.forth.show)
 
-        self.exitButton=QPushButton(self)
-        self.exitButton.setGeometry(900,20,200,50)
+        self.exitButton = QPushButton(self)
+        self.exitButton.setGeometry(900, 20, 200, 50)
         self.exitButton.setCursor(Qt.PointingHandCursor)
         self.exitButton.setStyleSheet("background:transparent;")
         self.exitButton.clicked.connect(self.exit)
 
     def exit(self):
         sys.exit(0)
+
+
 # 管理员操作界面
 class teaWindow(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, account, parent=None):
         super(teaWindow, self).__init__(parent)
         self.pix = QPixmap("./src/image/teaWindow.png")
-        self.account=None
+        self.account = account
+        self.first = managerfirstWindow(self.account, self)
+        self.second = managersecondWindow(self.account, self)
+        self.third=managerthirdWindow(self.account,self)
+        self.forth=managerforthWindow(self.account,self)
+        self.fifth=managerfifthWindow(self.account,self)
+        self.sixth=managersixthWindow(self.account,self)
+        self.seventh=managerseventhWindow(self.account,self)
+        self.eighth=managereightWindow(self.account,self)
+        self.ninth=managerninthWindow(self.account,self)
+        self.tenth=managertenthWindow(self.account,self)
+        self.eleventh=managereleventhWindow(self.account,self)
+        self.setWindow()
+        self.iniWindow()
+        self.iniLabelEdit()
+        self.iniButton()
+        self.iniSignalSlot()
 
     def setWindow(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -120,14 +142,242 @@ class teaWindow(QWidget):
         self.setMask(self.pix.mask())
         self.setGeometry(QDesktopWidget().geometry().width() / 2 - self.width() / 2,
                          QDesktopWidget().geometry().height() / 2 - self.height() / 2,
-                         self.width(),
-                         self.height())
+                         self.pix.width(),
+                         self.pix.height())
 
     def paintEvent(self, e):
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
-    def getAccount(self,account):
-        self.account=account
+
+    def getAccount(self, account):
+        self.account = account
+
+    def iniButton(self):
+        self.firstButton = QPushButton(self)
+        self.firstButton.setGeometry(50, 100, 200, 50)
+        self.firstButton.setCursor(Qt.PointingHandCursor)
+        self.firstButton.setStyleSheet("background:transparent;")
+        self.secondButton=QPushButton(self)
+        self.secondButton.setGeometry(50, 200, 200, 30)
+        self.secondButton.setCursor(Qt.PointingHandCursor)
+        self.secondButton.setStyleSheet("background:transparent;")
+        self.thirdButton=QPushButton(self)
+        self.thirdButton.setGeometry(50,250,200,30)
+        self.thirdButton.setCursor(Qt.PointingHandCursor)
+        self.thirdButton.setStyleSheet("background:transparent;")
+
+        self.forthButton=QPushButton(self)
+        self.forthButton.setGeometry(50, 290, 200, 30)
+        self.forthButton.setCursor(Qt.PointingHandCursor)
+        self.forthButton.setStyleSheet("background:transparent;")
+
+        self.fifthButton = QPushButton(self)
+        self.fifthButton.setGeometry(50, 330, 200, 30)
+        self.fifthButton.setCursor(Qt.PointingHandCursor)
+        self.fifthButton.setStyleSheet("background:transparent;")
+
+        self.sixthButton = QPushButton(self)
+        self.sixthButton.setGeometry(50, 420, 200, 30)
+        self.sixthButton.setCursor(Qt.PointingHandCursor)
+        self.sixthButton.setStyleSheet("background:transparent;")
+
+        self.seventhButton = QPushButton(self)
+        self.seventhButton.setGeometry(50, 460, 200, 30)
+        self.seventhButton.setCursor(Qt.PointingHandCursor)
+        self.seventhButton.setStyleSheet("background:transparent;")
+
+        self.eighthButton = QPushButton(self)
+        self.eighthButton.setGeometry(50, 550, 200, 30)
+        self.eighthButton.setCursor(Qt.PointingHandCursor)
+        self.eighthButton.setStyleSheet("background:transparent;")
+
+        self.ninthButton = QPushButton(self)
+        self.ninthButton.setGeometry(50, 590, 200, 30)
+        self.ninthButton.setCursor(Qt.PointingHandCursor)
+        self.ninthButton.setStyleSheet("background:transparent;")
+
+        self.tenthButton = QPushButton(self)
+        self.tenthButton.setGeometry(50, 635, 200, 30)
+        self.tenthButton.setCursor(Qt.PointingHandCursor)
+        self.tenthButton.setStyleSheet("background:transparent;")
+
+        self.eleventhButton=QPushButton(self)
+        self.eleventhButton.setGeometry(50, 675, 200, 30)
+        self.eleventhButton.setCursor(Qt.PointingHandCursor)
+        self.eleventhButton.setStyleSheet("background:transparent;")
+
+        self.exitButton = QPushButton(self)
+        self.exitButton.setGeometry(850, 20, 400, 50)
+        self.exitButton.setCursor(Qt.PointingHandCursor)
+        self.exitButton.setStyleSheet("background:transparent;")
+        self.exitButton.clicked.connect(self.exit)
+
+    def iniLabelEdit(self):
+        self.accLabel=QLabel(self)
+        self.accLabel.setText(str(self.account))
+        self.accLabel.setGeometry(950,20,100,30)
+
+    def exit(self):
+        sys.exit(0)
+
+    def iniSignalSlot(self):
+        self.firstButton.clicked.connect(self.first.show)
+        self.firstButton.clicked.connect(self.second.hide)
+        self.firstButton.clicked.connect(self.third.hide)
+        self.firstButton.clicked.connect(self.forth.hide)
+        self.firstButton.clicked.connect(self.fifth.hide)
+        self.firstButton.clicked.connect(self.sixth.hide)
+        self.firstButton.clicked.connect(self.seventh.hide)
+        self.firstButton.clicked.connect(self.eighth.hide)
+        self.firstButton.clicked.connect(self.ninth.hide)
+        self.firstButton.clicked.connect(self.tenthButton.hide)
+        self.firstButton.clicked.connect(self.eleventhButton.hide)
+
+        self.secondButton.clicked.connect(self.first.hide)
+        self.secondButton.clicked.connect(self.second.show)
+        self.secondButton.clicked.connect(self.third.hide)
+        self.secondButton.clicked.connect(self.forth.hide)
+        self.secondButton.clicked.connect(self.fifth.hide)
+        self.secondButton.clicked.connect(self.sixth.hide)
+        self.secondButton.clicked.connect(self.seventh.hide)
+        self.secondButton.clicked.connect(self.eighth.hide)
+        self.secondButton.clicked.connect(self.ninth.hide)
+        self.secondButton.clicked.connect(self.tenth.hide)
+        self.secondButton.clicked.connect(self.eleventh.hide)
+
+        self.thirdButton.clicked.connect(self.first.hide)
+        self.thirdButton.clicked.connect(self.second.hide)
+        self.thirdButton.clicked.connect(self.third.show)
+        self.thirdButton.clicked.connect(self.forth.hide)
+        self.thirdButton.clicked.connect(self.fifth.hide)
+        self.thirdButton.clicked.connect(self.sixth.hide)
+        self.thirdButton.clicked.connect(self.seventh.hide)
+        self.thirdButton.clicked.connect(self.eighth.hide)
+        self.thirdButton.clicked.connect(self.ninth.hide)
+        self.thirdButton.clicked.connect(self.tenth.hide)
+        self.thirdButton.clicked.connect(self.eleventh.hide)
+
+        self.forthButton.clicked.connect(self.first.hide)
+        self.forthButton.clicked.connect(self.second.hide)
+        self.forthButton.clicked.connect(self.third.hide)
+        self.forthButton.clicked.connect(self.forth.show)
+        self.forthButton.clicked.connect(self.fifth.hide)
+        self.forthButton.clicked.connect(self.sixth.hide)
+        self.forthButton.clicked.connect(self.seventh.hide)
+        self.forthButton.clicked.connect(self.eighth.hide)
+        self.forthButton.clicked.connect(self.ninth.hide)
+        self.forthButton.clicked.connect(self.tenth.hide)
+        self.forthButton.clicked.connect(self.eleventh.hide)
+
+        self.fifthButton.clicked.connect(self.first.hide)
+        self.fifthButton.clicked.connect(self.second.hide)
+        self.fifthButton.clicked.connect(self.third.hide)
+        self.fifthButton.clicked.connect(self.forth.hide)
+        self.fifthButton.clicked.connect(self.fifth.show)
+        self.fifthButton.clicked.connect(self.sixth.hide)
+        self.fifthButton.clicked.connect(self.seventh.hide)
+        self.fifthButton.clicked.connect(self.eighth.hide)
+        self.fifthButton.clicked.connect(self.ninth.hide)
+        self.fifthButton.clicked.connect(self.tenth.hide)
+        self.fifthButton.clicked.connect(self.eleventh.hide)
+
+        self.sixthButton.clicked.connect(self.first.hide)
+        self.sixthButton.clicked.connect(self.second.hide)
+        self.sixthButton.clicked.connect(self.third.hide)
+        self.sixthButton.clicked.connect(self.forth.hide)
+        self.sixthButton.clicked.connect(self.fifth.hide)
+        self.sixthButton.clicked.connect(self.sixth.show)
+        self.sixthButton.clicked.connect(self.seventh.hide)
+        self.sixthButton.clicked.connect(self.eighth.hide)
+        self.sixthButton.clicked.connect(self.ninth.hide)
+        self.sixthButton.clicked.connect(self.tenth.hide)
+        self.sixthButton.clicked.connect(self.eleventh.hide)
+
+        self.seventhButton.clicked.connect(self.first.hide)
+        self.seventhButton.clicked.connect(self.second.hide)
+        self.seventhButton.clicked.connect(self.third.hide)
+        self.seventhButton.clicked.connect(self.forth.hide)
+        self.seventhButton.clicked.connect(self.fifth.hide)
+        self.seventhButton.clicked.connect(self.sixth.hide)
+        self.seventhButton.clicked.connect(self.seventh.show)
+        self.seventhButton.clicked.connect(self.eighth.hide)
+        self.seventhButton.clicked.connect(self.ninth.hide)
+        self.seventhButton.clicked.connect(self.tenth.hide)
+        self.seventhButton.clicked.connect(self.eleventh.hide)
+
+        self.eighthButton.clicked.connect(self.first.hide)
+        self.eighthButton.clicked.connect(self.second.hide)
+        self.eighthButton.clicked.connect(self.third.hide)
+        self.eighthButton.clicked.connect(self.forth.hide)
+        self.eighthButton.clicked.connect(self.fifth.hide)
+        self.eighthButton.clicked.connect(self.sixth.hide)
+        self.eighthButton.clicked.connect(self.seventh.hide)
+        self.eighthButton.clicked.connect(self.eighth.show)
+        self.eighthButton.clicked.connect(self.ninth.hide)
+        self.eighthButton.clicked.connect(self.tenth.hide)
+        self.eighthButton.clicked.connect(self.eleventh.hide)
+
+        self.ninthButton.clicked.connect(self.first.hide)
+        self.ninthButton.clicked.connect(self.second.hide)
+        self.ninthButton.clicked.connect(self.third.hide)
+        self.ninthButton.clicked.connect(self.forth.hide)
+        self.ninthButton.clicked.connect(self.fifth.hide)
+        self.ninthButton.clicked.connect(self.sixth.hide)
+        self.ninthButton.clicked.connect(self.seventh.hide)
+        self.ninthButton.clicked.connect(self.eighth.hide)
+        self.ninthButton.clicked.connect(self.ninth.show)
+        self.ninthButton.clicked.connect(self.tenth.hide)
+        self.ninthButton.clicked.connect(self.eleventh.hide)
+
+        self.tenthButton.clicked.connect(self.first.hide)
+        self.tenthButton.clicked.connect(self.second.hide)
+        self.tenthButton.clicked.connect(self.third.hide)
+        self.tenthButton.clicked.connect(self.forth.hide)
+        self.tenthButton.clicked.connect(self.fifth.hide)
+        self.tenthButton.clicked.connect(self.sixth.hide)
+        self.tenthButton.clicked.connect(self.seventh.hide)
+        self.tenthButton.clicked.connect(self.eighth.hide)
+        self.tenthButton.clicked.connect(self.ninth.hide)
+        self.tenthButton.clicked.connect(self.tenth.show)
+        self.tenthButton.clicked.connect(self.eleventh.hide)
+
+        self.eleventhButton.clicked.connect(self.first.hide)
+        self.eleventhButton.clicked.connect(self.second.hide)
+        self.eleventhButton.clicked.connect(self.third.hide)
+        self.eleventhButton.clicked.connect(self.forth.hide)
+        self.eleventhButton.clicked.connect(self.fifth.hide)
+        self.eleventhButton.clicked.connect(self.sixth.hide)
+        self.eleventhButton.clicked.connect(self.seventh.hide)
+        self.eleventhButton.clicked.connect(self.eighth.hide)
+        self.eleventhButton.clicked.connect(self.ninth.hide)
+        self.eleventhButton.clicked.connect(self.tenth.hide)
+        self.eleventhButton.clicked.connect(self.eleventh.show)
+
+
+    def iniWindow(self):
+        self.first.setGeometry(300, 100, 900, 800)
+        self.first.show()
+        self.second.setGeometry(300, 100, 900, 800)
+        self.second.hide()
+        self.third.setGeometry(300, 100, 900, 800)
+        self.third.hide()
+        self.forth.setGeometry(300, 100, 900, 800)
+        self.forth.hide()
+        self.fifth.setGeometry(300, 100, 900, 800)
+        self.fifth.hide()
+        self.sixth.setGeometry(300, 100, 900, 800)
+        self.sixth.hide()
+        self.seventh.setGeometry(300, 100, 900, 800)
+        self.seventh.hide()
+        self.eighth.setGeometry(300, 100, 900, 800)
+        self.eighth.hide()
+        self.ninth .setGeometry(300, 100, 900, 800)
+        self.ninth.hide()
+        self.tenth .setGeometry(300, 100, 900, 800)
+        self.tenth.hide()
+        self.eleventh .setGeometry(300, 100, 900, 800)
+        self.eleventh.hide()
+
 
 # 学生登陆界面
 class stulogWindow(QWidget):
@@ -189,7 +439,6 @@ class stulogWindow(QWidget):
         self.initSignalSlot()
         self.login()
 
-
     def submit_login(self):
         self.logupWIn.success.connect(self.logupWIn.close)
         self.logupWIn.success.connect(self.show)
@@ -241,7 +490,6 @@ class stulogWindow(QWidget):
 class tealogWindow(QWidget):
     def __init__(self, parent=None):
         super(tealogWindow, self).__init__(parent)
-        self.teaOperate = teaWindow()
         self.pix = QPixmap("./src/image/loginWindow2.png")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
@@ -330,11 +578,10 @@ class tealogWindow(QWidget):
             self.pwd.clear()
             self.mes.show()
         else:
+            self.teaOperate = teaWindow(self.account.text())
             self.pwd.clear()
             self.account.clear()
-            print("sd")
             self.teaOperate.show()
-            self.teaOperate.getAccount(self.account.text())
             self.hide()
 
 
