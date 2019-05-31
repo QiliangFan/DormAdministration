@@ -22,17 +22,40 @@ def selectNumByType(type):
     data=cur.fetchall()
     return data[0][0]
 
-def selectRoomBuildingByAccount(account):
-    cur.execute("select room_build_id from student where student.account_id in (select account.account_id from account where account_name='%s')"%(account,))
+#宿舍楼数量
+def selectRoomBuilding():
+    cur.execute("select count(*) from building;")
     data=cur.fetchall()
-    return data
+    d=data[0][0]
+    return str(d)
 
-def selectRoomByAccount(account):
-    cur.execute("select room_id from student where student.account_id in (select account.account_id from account where account_name='%s')"%(account,))
+#宿舍间数
+def selectRoom():
+    cur.execute("select count(*) from room;")
     data=cur.fetchall()
-    return data
+    return str(data[0][0])
 
-def selectStudentNumberHasInByAccount(account):
+def selectStudentNumberHasIn(account):
     cur.execute("select count(*) from student")
     data=cur.fetchall()
     return data[0][0]
+
+#宿舍楼数量
+def countBuildtaccount():
+    cur.execute("call countbuildtaccount()")
+    data=cur.fetchall()
+    return data[0][0]
+
+#已经容纳的学生
+def countStudentHasIn():
+    cur.execute("select sum(act_capacity) from room;")
+    data=cur.fetchall()
+    return str(data[0[0]])
+
+def countMaxStudentCanIn():
+    cur.execute("select sum(max_capacity) from room;")
+    data=cur.fetchall()
+    if data[0][0] is None:
+        return str(0)
+    else:
+        return str(data[0][0])

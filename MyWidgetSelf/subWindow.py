@@ -1,5 +1,8 @@
 from DDL.insert import *
 from DDL.delete import *
+from DDL.Stu_query2 import *
+from DDL.Stu_query3 import *
+from DDL.Stu_query4 import *
 from DDL.query import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -38,22 +41,24 @@ class firstWindow(QWidget):
     def iniLabel(self):
         self.student_number.setText(str(selectNumByType("student")))
         self.student_number.setGeometry(180, 80, 200, 50)
-        self.teacher_number.setText(str(selectNumByType("maanger")))
+        self.teacher_number.setText(str(selectNumByType("manager")))
         self.teacher_number.setGeometry(680, 80, 200, 50)
-        data = selectRoomBuildingByAccount(self.account)
+        data = selectRoomBuilding()
         if len(data) > 0:
-            self.dorm_number.setText(str(selectRoomBuildingByAccount(self.account)))
+            self.dorm_number.setText(selectRoomBuilding()+'栋')
         else:
-            self.dorm_number.setText("++")
+            self.dorm_number.setText("未知")
         self.dorm_number.setGeometry(140, 290, 200, 50)
-        data = selectRoomByAccount(self.account)
+        data = selectRoom()
         if len(data) > 0:
-            self.room_number.setText(str(selectRoomByAccount(self.account)))
+            self.room_number.setText(selectRoom()+'间')
         else:
-            self.room_number.setText("++")
+            self.room_number.setText("未知")
         self.room_number.setGeometry(420, 290, 200, 50)
-        self.student_in.setText(str(selectStudentNumberHasInByAccount(self.account)))
+        self.student_in.setText(str(selectStudentNumberHasIn(self.account)))
         self.student_in.setGeometry(690, 290, 200, 50)
+        self.student_canIn.setText(countMaxStudentCanIn())
+        self.student_canIn.setGeometry(420,460,200,50)
 
 
 # 学生端同宿舍人员查询
@@ -98,8 +103,18 @@ class secondWindow(QWidget):
         self.result.setHorizontalHeaderLabels(list)
 
     def iniSignalSlot(self):
+
+        self.submit.clicked.connect(self.query)
+
+    def query(self):
         building = self.building.text()
         room = self.room.text()
+        data=getStuInfro(building,room)
+        length=len(data)
+        self.result.setRowCount(length)
+        for i in range(0,length):
+            for j in range(0,8):
+                self.result.setItem(QTableWidgetItem(str(data[i][j])))
 
 
 # 学生端查询本楼成员
@@ -145,9 +160,17 @@ class thirdWindow(QWidget):
         self.result.setHorizontalHeaderLabels(list)
 
     def iniSignalSlot(self):
+        self.submit.clicked.connect(self.query)
+
+    def query(self):
         building = self.building.text()
         name = self.name.text()
-
+        data=getStuByBuildAndName(building,name)
+        length=len(data)
+        self.result.setRowCount(length)
+        for i in range(0,length):
+            for j in range(0,5):
+                self.result.setItem(QTableWidgetItem(str(data[i][j])))
 
 # 学生端个人资料面板
 class forthWindow(QWidget):
@@ -158,6 +181,7 @@ class forthWindow(QWidget):
         self.submit = QPushButton(self)
         self.setWindow()
         self.iniLineEdit()
+        self.iniSignalSlot()
         self.iniButton()
 
     def setWindow(self):
@@ -207,6 +231,29 @@ class forthWindow(QWidget):
         self.submit.setCursor(Qt.PointingHandCursor)
         self.submit.setStyleSheet("background:transparent;")
 
+    def iniSignalSlot(self):
+        self.submit.clicked.connect(self.query)
+        self.submit.clicked.connect(self.showMessageBox)
+
+    def query(self):
+        stu_id=self.id.text()
+        name=self.name.text()
+        dept_name=self.department_name.text()
+        grade=self.grade.text()
+        phoneParent=self.phoneparent.text()
+        phoneOwn=self.phoneself.text()
+        gender=self.gender.text()
+        bed_id=self.bed_id.text()
+        admisstion_date=self.admition_date.text()
+        birthday=self.birthday.text()
+        modify(self.account,stu_id,name,dept_name,grade,phoneParent,
+               phoneOwn,gender,bed_id,admisstion_date,birthday)
+
+    def showMessageBox(self):
+        self.m=QMessageBox()
+        self.m.setWindowTitle("注意")
+        self.m.setText("修改成功")
+        self.m.show()
 
 # 管理员端显示宿舍整体情况
 class managerfirstWindow(QWidget):
@@ -242,19 +289,19 @@ class managerfirstWindow(QWidget):
         self.student_number.setGeometry(180, 80, 200, 50)
         self.teacher_number.setText(str(selectNumByType("maanger")))
         self.teacher_number.setGeometry(680, 80, 200, 50)
-        data = selectRoomBuildingByAccount(self.account)
+        data = selectRoomBuilding(self.account)
         if len(data) > 0:
-            self.dorm_number.setText(str(selectRoomBuildingByAccount(self.account)))
+            self.dorm_number.setText(str(selectRoomBuilding(self.account)))
         else:
             self.dorm_number.setText("++")
         self.dorm_number.setGeometry(140, 290, 200, 50)
-        data = selectRoomByAccount(self.account)
+        data = selectRoom(self.account)
         if len(data) > 0:
-            self.room_number.setText(str(selectRoomByAccount(self.account)))
+            self.room_number.setText(str(selectRoom(self.account)))
         else:
             self.room_number.setText("++")
         self.room_number.setGeometry(420, 290, 200, 50)
-        self.student_in.setText(str(selectStudentNumberHasInByAccount(self.account)))
+        self.student_in.setText(str(selectStudentNumberHasIn(self.account)))
         self.student_in.setGeometry(690, 290, 200, 50)
 
 
@@ -444,11 +491,17 @@ class managerseventhWindow(QWidget):
 
     def iniTable(self):
         self.table = QTableWidget(self)
-        self.table.setGeometry(20, 120, 820, 600)
+        self.table.setGeometry(20, 120, 830, 600)
         self.table.horizontalHeader().setDefaultSectionSize(400)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(2)
         self.table.setHorizontalHeaderLabels(['房间号', '剩余床位'])
+        self.table.setRowCount(1)
+        self.table.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)
+        self.table.setItem(0,0,QTableWidgetItem("123"))
+        self.table.setItem(0,1,QTableWidgetItem("53"))
+        ##不可修改
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
     def iniLineEdit(self):
         self.room = QLineEdit(self)

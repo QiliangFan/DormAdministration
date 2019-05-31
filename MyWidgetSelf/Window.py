@@ -230,8 +230,8 @@ class teaWindow(QWidget):
         self.firstButton.clicked.connect(self.seventh.hide)
         self.firstButton.clicked.connect(self.eighth.hide)
         self.firstButton.clicked.connect(self.ninth.hide)
-        self.firstButton.clicked.connect(self.tenthButton.hide)
-        self.firstButton.clicked.connect(self.eleventhButton.hide)
+        self.firstButton.clicked.connect(self.tenth.hide)
+        self.firstButton.clicked.connect(self.eleventh.hide)
 
         self.secondButton.clicked.connect(self.first.hide)
         self.secondButton.clicked.connect(self.second.show)
