@@ -7,7 +7,16 @@ from DDL.query import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-
+from DDL.Tea_query2 import *
+from DDL.Tea_query3 import *
+from DDL.Tea_query4 import *
+from DDL.Tea_query5 import *
+from DDL.Tea_query6 import *
+from DDL.Tea_query7 import *
+from DDL.Tea_query8 import *
+from DDL.Tea_query11 import *
+from DDL.Tea_query10 import *
+from DDL.Tea_query9 import *
 
 # 学生端显示宿舍总体情况
 class firstWindow(QWidget):
@@ -23,6 +32,7 @@ class firstWindow(QWidget):
         self.room_number = QLabel(self)
         self.student_in = QLabel(self)
         self.student_canIn = QLabel(self)
+        self.iniLabel()
 
     def setWindow(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -31,7 +41,6 @@ class firstWindow(QWidget):
         self.setMask(self.pix.mask())
 
     def paintEvent(self, a0: QPaintEvent) -> None:
-        self.iniLabel()
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
 
@@ -45,20 +54,20 @@ class firstWindow(QWidget):
         self.teacher_number.setGeometry(680, 80, 200, 50)
         data = selectRoomBuilding()
         if len(data) > 0:
-            self.dorm_number.setText(selectRoomBuilding()+'栋')
+            self.dorm_number.setText(selectRoomBuilding() + '栋')
         else:
             self.dorm_number.setText("未知")
         self.dorm_number.setGeometry(140, 290, 200, 50)
         data = selectRoom()
         if len(data) > 0:
-            self.room_number.setText(selectRoom()+'间')
+            self.room_number.setText(selectRoom() + '间')
         else:
             self.room_number.setText("未知")
         self.room_number.setGeometry(420, 290, 200, 50)
-        self.student_in.setText(str(selectStudentNumberHasIn(self.account)))
+        self.student_in.setText(str(selectStudentNumberHasIn()))
         self.student_in.setGeometry(690, 290, 200, 50)
         self.student_canIn.setText(countMaxStudentCanIn())
-        self.student_canIn.setGeometry(420,460,200,50)
+        self.student_canIn.setGeometry(420, 460, 200, 50)
 
 
 # 学生端同宿舍人员查询
@@ -94,27 +103,33 @@ class secondWindow(QWidget):
         self.submit.setGeometry(680, 70, 160, 30)
         self.submit.setText("查询")
         self.submit.setCursor(Qt.PointingHandCursor)
-        self.result.setGeometry(20, 120, 815, 600)
+        self.result.setGeometry(20, 120, 830, 600)
         self.result.horizontalHeader().setDefaultSectionSize(100)
         self.result.verticalHeader().setDefaultSectionSize(30)
+
         self.result.setColumnCount(8)
+        self.result.setColumnWidth(6, 130)
+        self.result.setColumnWidth(7,70)
         # self.result.setRowCount(20)
         list = [u'学号', u'姓名', u'学院', u'年级', u'出生日期', u'个人电话', u'父母电话', u'床号']
         self.result.setHorizontalHeaderLabels(list)
 
     def iniSignalSlot(self):
-
         self.submit.clicked.connect(self.query)
 
     def query(self):
         building = self.building.text()
         room = self.room.text()
-        data=getStuInfro(building,room)
-        length=len(data)
+        data = getStuInfro(building, room)
+        length = len(data)
         self.result.setRowCount(length)
-        for i in range(0,length):
-            for j in range(0,8):
-                self.result.setItem(QTableWidgetItem(str(data[i][j])))
+        self.result.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        for i in range(0, length):
+            for j in range(0, 8):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 学生端查询本楼成员
@@ -151,7 +166,7 @@ class thirdWindow(QWidget):
         self.submit.setGeometry(680, 70, 160, 30)
         self.submit.setText("查询")
         self.submit.setCursor(Qt.PointingHandCursor)
-        self.result.setGeometry(20, 120, 810, 600)
+        self.result.setGeometry(20, 120, 830, 600)
         self.result.horizontalHeader().setDefaultSectionSize(160)
         self.result.verticalHeader().setDefaultSectionSize(30)
         self.result.setColumnCount(5)
@@ -165,12 +180,17 @@ class thirdWindow(QWidget):
     def query(self):
         building = self.building.text()
         name = self.name.text()
-        data=getStuByBuildAndName(building,name)
-        length=len(data)
+        data = getStuByBuildAndName(building, name)
+        length = len(data)
         self.result.setRowCount(length)
-        for i in range(0,length):
-            for j in range(0,5):
-                self.result.setItem(QTableWidgetItem(str(data[i][j])))
+        self.result.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        for i in range(0, length):
+            for j in range(0, 5):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+
 
 # 学生端个人资料面板
 class forthWindow(QWidget):
@@ -226,6 +246,18 @@ class forthWindow(QWidget):
         self.admition_date.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.birthday.setStyleSheet("background:transparent;border-width:0;border-style:outset")
 
+        data=getinfo(self.account)
+        self.id.setText(str(data[0][0]))
+        self.name.setText(str(data[0][1]))
+        self.department_name.setText(str(data[0][2]))
+        self.grade.setText(str(data[0][3]))
+        self.phoneparent.setText(str(data[0][4]))
+        self.phoneself.setText(str(data[0][5]))
+        self.gender.setText(str(data[0][6]))
+        self.bed_id.setText(str(data[0][7]))
+        self.admition_date.setText(str(data[0][8]))
+        self.birthday.setText(str(data[0][9]))
+
     def iniButton(self):
         self.submit.setGeometry(370, 630, 80, 50)
         self.submit.setCursor(Qt.PointingHandCursor)
@@ -236,24 +268,25 @@ class forthWindow(QWidget):
         self.submit.clicked.connect(self.showMessageBox)
 
     def query(self):
-        stu_id=self.id.text()
-        name=self.name.text()
-        dept_name=self.department_name.text()
-        grade=self.grade.text()
-        phoneParent=self.phoneparent.text()
-        phoneOwn=self.phoneself.text()
-        gender=self.gender.text()
-        bed_id=self.bed_id.text()
-        admisstion_date=self.admition_date.text()
-        birthday=self.birthday.text()
-        modify(self.account,stu_id,name,dept_name,grade,phoneParent,
-               phoneOwn,gender,bed_id,admisstion_date,birthday)
+        stu_id = self.id.text()
+        name = self.name.text()
+        dept_name = self.department_name.text()
+        grade = self.grade.text()
+        phoneParent = self.phoneparent.text()
+        phoneOwn = self.phoneself.text()
+        gender = self.gender.text()
+        bed_id = self.bed_id.text()
+        admisstion_date = self.admition_date.text()
+        birthday = self.birthday.text()
+        modify(self.account, stu_id, name, dept_name, grade, phoneParent,
+               phoneOwn, gender, bed_id, admisstion_date, birthday)
 
     def showMessageBox(self):
-        self.m=QMessageBox()
+        self.m = QMessageBox()
         self.m.setWindowTitle("注意")
         self.m.setText("修改成功")
         self.m.show()
+
 
 # 管理员端显示宿舍整体情况
 class managerfirstWindow(QWidget):
@@ -269,6 +302,7 @@ class managerfirstWindow(QWidget):
         self.room_number = QLabel(self)
         self.student_in = QLabel(self)
         self.student_canIn = QLabel(self)
+        self.iniLabel()
 
     def setWindow(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -277,7 +311,6 @@ class managerfirstWindow(QWidget):
         self.setMask(self.pix.mask())
 
     def paintEvent(self, a0: QPaintEvent) -> None:
-        self.iniLabel()
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
 
@@ -287,22 +320,18 @@ class managerfirstWindow(QWidget):
     def iniLabel(self):
         self.student_number.setText(str(selectNumByType("student")))
         self.student_number.setGeometry(180, 80, 200, 50)
-        self.teacher_number.setText(str(selectNumByType("maanger")))
+        self.teacher_number.setText(str(selectNumByType("manager")))
         self.teacher_number.setGeometry(680, 80, 200, 50)
-        data = selectRoomBuilding(self.account)
-        if len(data) > 0:
-            self.dorm_number.setText(str(selectRoomBuilding(self.account)))
-        else:
-            self.dorm_number.setText("++")
+        data = selectRoomBuilding()
+        self.dorm_number.setText(str(selectRoomBuilding()) + "栋")
         self.dorm_number.setGeometry(140, 290, 200, 50)
-        data = selectRoom(self.account)
-        if len(data) > 0:
-            self.room_number.setText(str(selectRoom(self.account)))
-        else:
-            self.room_number.setText("++")
+        data = selectRoom()
+        self.room_number.setText(str(selectRoom()) + "间")
         self.room_number.setGeometry(420, 290, 200, 50)
-        self.student_in.setText(str(selectStudentNumberHasIn(self.account)))
+        self.student_in.setText(str(selectStudentNumberHasIn()))
         self.student_in.setGeometry(690, 290, 200, 50)
+        self.student_canIn.setText(str(countMaxStudentCanIn()))
+        self.student_canIn.setGeometry(420, 460, 200, 50)
 
 
 # 同楼管理员信息
@@ -331,12 +360,23 @@ class managersecondWindow(QWidget):
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(['工号', '姓名', '性别', '出生日期', '个人电话'])
+        data = GetManagerInfoSameBuilding(self.account)
+        length = len(data)
+        self.table.setRowCount(length)
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        for i in range(0, length):
+            for j in range(0, 5):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 同楼全部学生信息
 class managerthirdWindow(QWidget):
     def __init__(self, account, parent=None):
         super(managerthirdWindow, self).__init__(parent)
+        self.account = account
         self.pix = QPixmap("./src/image/m3.png")
         self.setWindow()
         self.iniTable()
@@ -358,6 +398,16 @@ class managerthirdWindow(QWidget):
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
+        data = getStuInfoSameBuilding(self.account)
+        length = len(data)
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.table.setRowCount(length)
+        for i in range(0, length):
+            for j in range(0, 9):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 同楼的某间的学生信息
@@ -388,6 +438,7 @@ class managerforthWindow(QWidget):
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
     def iniLineEdit(self):
         self.room = QLineEdit(self)
@@ -397,7 +448,20 @@ class managerforthWindow(QWidget):
         self.submit = QPushButton(self)
         self.submit.setGeometry(550, 50, 160, 40)
         self.submit.setText("搜索")
-        self.setCursor(Qt.PointingHandCursor)
+        self.submit.setCursor(Qt.PointingHandCursor)
+        self.submit.clicked.connect(self.query)
+
+    def query(self):
+        room = self.room.text()
+        data = getStuInfo(room, self.account)
+        length = len(data)
+        self.table.setRowCount(length)
+        for i in range(0, length):
+            for j in range(0, 9):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 同楼的某学生的信息
@@ -430,14 +494,27 @@ class managerfifthWindow(QWidget):
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
 
     def iniLineEdit(self):
-        self.room = QLineEdit(self)
-        self.room.setGeometry(270, 50, 200, 40)
+        self.stuid = QLineEdit(self)
+        self.stuid.setGeometry(270, 50, 200, 40)
 
     def iniButton(self):
         self.submit = QPushButton(self)
         self.submit.setGeometry(550, 50, 160, 40)
         self.submit.setText("搜索")
-        self.setCursor(Qt.PointingHandCursor)
+        self.submit.setCursor(Qt.PointingHandCursor)
+        self.submit.clicked.connect(self.query)
+
+    def query(self):
+        stuid = self.stuid.text()
+        data = getStuInfoById(stuid, self.account)
+        length = len(data)
+        self.table.setRowCount(length)
+        for i in range(0, length):
+            for j in range(0, 9):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 所属楼的可用房间情况
@@ -461,12 +538,24 @@ class managersixthWindow(QWidget):
 
     def iniTable(self):
         self.table = QTableWidget(self)
-        self.table.setGeometry(20, 120, 810, 600)
+        self.table.setGeometry(20, 120, 825, 600)
         self.table.horizontalHeader().setDefaultSectionSize(400)
         self.table.setColumnCount(2)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setHorizontalHeaderLabels(['未满房间号', '剩余床位'])
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
+        data=getRoomAvaliable(self.account)
+        length=len(data)
+
+        self.table.setRowCount(length)
+
+        for i in range(0,length):
+            for j in range(0,2):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 # 所属楼的某间房间剩余
 class managerseventhWindow(QWidget):
@@ -496,10 +585,7 @@ class managerseventhWindow(QWidget):
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(2)
         self.table.setHorizontalHeaderLabels(['房间号', '剩余床位'])
-        self.table.setRowCount(1)
         self.table.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)
-        self.table.setItem(0,0,QTableWidgetItem("123"))
-        self.table.setItem(0,1,QTableWidgetItem("53"))
         ##不可修改
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
@@ -511,8 +597,21 @@ class managerseventhWindow(QWidget):
         self.submit = QPushButton(self)
         self.submit.setGeometry(550, 50, 160, 40)
         self.submit.setText("搜索")
-        self.setCursor(Qt.PointingHandCursor)
+        self.submit.setCursor(Qt.PointingHandCursor)
+        self.submit.clicked.connect(self.query)
 
+    def query(self):
+        room=self.room.text()
+        data=getNumOfBed(room,self.account)
+        print(data)
+        length=len(data)
+        self.table.setRowCount(length)
+        for i in range(0,length):
+            for j in range(0,2):
+                if data[i][j] is None:
+                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                else:
+                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 # 安排无床位学生的宿舍
 class managereightWindow(QWidget):
@@ -538,27 +637,50 @@ class managereightWindow(QWidget):
 
     def iniButton(self):
         self.submit = QPushButton(self)
-        self.submit.setGeometry(620,100,100,30)
+        self.submit.setGeometry(620, 100, 100, 30)
         self.submit.setText("添加")
         self.submit.setCursor(Qt.PointingHandCursor)
 
     def iniSignalSlot(self):
-        pass
+        self.submit.clicked.connect(self.query)
 
     def iniLineEdit(self):
         self.stuid = QLineEdit(self)
         self.room = QLineEdit(self)
-        self.stuid.setGeometry(200,100,100,30)
-        self.room.setGeometry(420,100,100,30)
+        self.stuid.setGeometry(200, 100, 100, 30)
+        self.room.setGeometry(420, 100, 100, 30)
 
     def iniTable(self):
-        self.table=QTableWidget(self)
-        self.table.setGeometry(20, 220, 815, 400)
+        self.table = QTableWidget(self)
+        self.table.setGeometry(20, 220, 845, 400)
         self.table.horizontalHeader().setDefaultSectionSize(90)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
+        self.table.setColumnWidth(4,50)
+        self.table.setColumnWidth(5,50)
+        self.table.setColumnWidth(7,125)
+        self.table.setColumnWidth(8,125)
+        self.table.setColumnWidth(2,50)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
 
+    def query(self):
+        stuid=self.stuid.text()
+        room=self.room.text()
+        data=arrangeStuWithoutBed(stuid,room,self.account)
+        if data==-1:
+            self.m=QMessageBox()
+            self.m.setWindowTitle("注意")
+            self.m.setText("此学生已有床位或目标宿舍房间已满！")
+            self.m.show()
+        else:
+            length=len(data)
+            self.table.setRowCount(length)
+            for i in range(0,length):
+                for j in range(0,9):
+                    if data[i][j] is None:
+                        self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    else:
+                        self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 # 删除离校中学生的宿舍信息
 class managerninthWindow(QWidget):
@@ -583,21 +705,49 @@ class managerninthWindow(QWidget):
 
     def iniButton(self):
         self.delete = QPushButton(self)
-        self.delete.setGeometry(400,105,100,30)
+        self.delete.setGeometry(400, 105, 100, 30)
         self.delete.setText("删除")
         self.delete.setCursor(Qt.PointingHandCursor)
+        self.delete.clicked.connect(self.query)
 
     def iniLineEdit(self):
         self.stuid = QLineEdit(self)
-        self.stuid.setGeometry(200,105,100,30)
+        self.stuid.setGeometry(200, 105, 100, 30)
 
     def iniTable(self):
-        self.table=QTableWidget(self)
+        self.table = QTableWidget(self)
         self.table.setGeometry(20, 220, 815, 400)
         self.table.horizontalHeader().setDefaultSectionSize(90)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
+        self.table.setColumnWidth(2, 50)
+        self.table.setColumnWidth(4, 60)
+        self.table.setColumnWidth(5, 45)
+        self.table.setColumnWidth(6, 100)
+        self.table.setColumnWidth(7, 120)
+        self.table.setColumnWidth(8, 120)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
+
+    def query(self):
+        data=delete(self.account,self.stuid.text())
+        if data==-1:
+            self.em=QMessageBox()
+            self.em.setWindowTitle("注意")
+            self.em.setText("该学生没有住宿信息！")
+        else:
+            self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            length = len(data)
+            self.table.setRowCount(length)
+            for i in range(0, length):
+                for j in range(0, 9):
+                    if data[i][j] is None:
+                        self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    else:
+                        self.table.setItem(i,j,QTableWidgetItem(str(data[i][j])))
+            self.suc = QMessageBox()
+            self.suc.setWindowTitle("注意")
+            self.suc.setText("修改成功")
+            self.suc.show()
 
 
 # 学生寝室调整
@@ -619,30 +769,61 @@ class managertenthWindow(QWidget):
 
     def iniButton(self):
         self.submit = QPushButton(self)
-        self.submit.setGeometry(600,105,100,30)
+        self.submit.setGeometry(600, 105, 100, 30)
         self.submit.setText("调整")
         self.submit.setCursor(Qt.PointingHandCursor)
-
+        self.submit.clicked.connect(self.query)
 
     def paintEvent(self, QPaintEvent):
-        p=QPainter(self)
-        p.drawPixmap(0,0,self.pix.width(),self.pix.height(),self.pix)
-
+        p = QPainter(self)
+        p.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
 
     def iniLineEdit(self):
         self.stuid = QLineEdit(self)
         self.room = QLineEdit(self)
-        self.stuid.setGeometry(200,105,100,30)
-        self.room.setGeometry(420,105,100,30)
+        self.stuid.setGeometry(200, 105, 100, 30)
+        self.room.setGeometry(420, 105, 100, 30)
 
     def iniTable(self):
-        self.table=QTableWidget(self)
+        self.table = QTableWidget(self)
         self.table.setGeometry(20, 220, 815, 400)
         self.table.horizontalHeader().setDefaultSectionSize(90)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
+        self.table.setColumnWidth(2,50)
+        self.table.setColumnWidth(4,60)
+        self.table.setColumnWidth(5,45)
+        self.table.setColumnWidth(6,100)
+        self.table.setColumnWidth(7,120)
+        self.table.setColumnWidth(8,120)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
+    def query(self):
+        if self.stuid.text() =="" or self.room.text()=="":
+            self.q=QMessageBox()
+            self.q.setWindowTitle("注意")
+            self.q.setText("请输入有效信息！")
+        else:
+            data=adjust(self.stuid.text(),self.room.text(),self.account)
+            if data==-1:
+                self.mm=QMessageBox()
+                self.mm.setWindowTitle("注意")
+                self.mm.setText("目标宿舍已经满人！")
+                self.mm.show()
+            else:
+                length=len(data)
+                self.table.setRowCount(length)
+                for i in range(0,length):
+                    for j in range(0,9):
+                        if data[i][j] is None:
+                            self.table.setItem(i, j, QTableWidgetItem(str("")))
+                        else:
+                            self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                self.suc=QMessageBox()
+                self.suc.setWindowTitle("注意")
+                self.suc.setText("修改成功")
+                self.suc.show()
 
 # 个人资料
 class managereleventhWindow(QWidget):
@@ -669,19 +850,62 @@ class managereleventhWindow(QWidget):
         self.name = QLineEdit(self)
         self.building = QLineEdit(self)
         self.phone = QLineEdit(self)
+        self.gender=QLineEdit(self)
+        self.birthday=QLineEdit(self)
 
-        self.tea_id.setGeometry(120,160,400,50)
-        self.name.setGeometry(120,220,400,50)
-        self.building.setGeometry(120,290,400,50)
-        self.phone.setGeometry(120,360,400,50)
+
+
+        self.tea_id.setGeometry(155, 165, 400, 50)
+        self.name.setGeometry(155, 220, 400, 50)
+        self.gender.setGeometry(155,270,400,50)
+        self.building.setGeometry(155,315,400,50)
+        self.phone.setGeometry(155,360,400,50)
+        self.birthday.setGeometry(155,415,400,50)
+
+
         self.tea_id.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.name.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.building.setStyleSheet("background:transparent;border-width:0;border-style:outset")
         self.phone.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.gender.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.birthday.setStyleSheet("background:transparent;border-width:0;border-style:outset")
 
+        data=getTeaInfo(self.account)
+        self.tea_id.setText(str(data[0][0]))
+        self.name.setText(str(data[0][1]))
+        self.building.setText(str(data[0][2]))
+        self.phone.setText(str(data[0][3]))
+        self.gender.setText(str(data[0][4]))
+        self.birthday.setText(str(data[0][5]))
 
     def iniButton(self):
         self.submit = QPushButton(self)
-        self.submit.setGeometry(370,480,100,50)
+        self.submit.setGeometry(360, 470, 100, 50)
         self.submit.setCursor(Qt.PointingHandCursor)
         self.submit.setStyleSheet("background:transparent;")
+        self.submit.clicked.connect(self.query)
+
+    def query(self):
+        if self.building.text()=="":
+            self.m1=QMessageBox()
+            self.m1.setWindowTitle("注意")
+            self.m1.setText("宿舍楼不能为空")
+            self.m1.show()
+        elif self.tea_id.text()=="":
+            self.m2=QMessageBox()
+            self.m2.setWindowTitle("注意")
+            self.m2.setText("工号不能为空")
+            self.m2.show()
+        else:
+            a=Teamodify(self.account,self.tea_id.text(),self.name.text(),self.gender.text(),self.building.text(),self.phone.text(),self.birthday.text())
+            if a==-1:
+                self.m3=QMessageBox()
+                self.m3.setWindowTitle("注意")
+                self.m3.setText("楼号不存在！")
+                self.m3.show()
+            else:
+                self.m = QMessageBox()
+                self.m.setWindowTitle("注意")
+                self.m.setText("修改成功！")
+                self.m.show()
+

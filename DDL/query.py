@@ -1,5 +1,4 @@
 from DDL.account import *
-import pymysql
 
 
 def selectAllByAccount(account):
@@ -35,16 +34,16 @@ def selectRoom():
     data=cur.fetchall()
     return str(data[0][0])
 
-def selectStudentNumberHasIn(account):
+def selectStudentNumberHasIn():
     cur.execute("select count(*) from student")
     data=cur.fetchall()
-    return data[0][0]
+    return str(data[0][0])
 
 #宿舍楼数量
 def countBuildtaccount():
     cur.execute("call countbuildtaccount()")
     data=cur.fetchall()
-    return data[0][0]
+    return str(data[0][0])
 
 #已经容纳的学生
 def countStudentHasIn():
@@ -52,6 +51,7 @@ def countStudentHasIn():
     data=cur.fetchall()
     return str(data[0[0]])
 
+#可容纳数量
 def countMaxStudentCanIn():
     cur.execute("select sum(max_capacity) from room;")
     data=cur.fetchall()

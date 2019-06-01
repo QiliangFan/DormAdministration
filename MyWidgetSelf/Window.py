@@ -154,13 +154,15 @@ class teaWindow(QWidget):
 
     def iniButton(self):
         self.firstButton = QPushButton(self)
-        self.firstButton.setGeometry(50, 100, 200, 50)
+        self.firstButton.setGeometry(50, 120, 200, 30)
         self.firstButton.setCursor(Qt.PointingHandCursor)
         self.firstButton.setStyleSheet("background:transparent;")
+
         self.secondButton=QPushButton(self)
         self.secondButton.setGeometry(50, 200, 200, 30)
         self.secondButton.setCursor(Qt.PointingHandCursor)
         self.secondButton.setStyleSheet("background:transparent;")
+
         self.thirdButton=QPushButton(self)
         self.thirdButton.setGeometry(50,250,200,30)
         self.thirdButton.setCursor(Qt.PointingHandCursor)
@@ -461,7 +463,7 @@ class stulogWindow(QWidget):
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
 
     def keyPressEvent(self, keyEvent):
-        if keyEvent.key() == Qt.Key_Return:
+        if keyEvent.key() == Qt.Key_Return and self.isVisible():
             self.loginbutton.clicked.emit()
 
     def login(self):
@@ -560,9 +562,7 @@ class tealogWindow(QWidget):
         painter = QPainter(self)
         painter.drawPixmap(0, 0, self.pix.width(), self.pix.height(), self.pix)
 
-    def keyPressEvent(self, keyEvent):
-        if keyEvent.key() == Qt.Key_Return:
-            self.loginbutton.clicked.emit()
+
 
     def login(self):
         self.loginButton.clicked.connect(self.verify)
@@ -581,8 +581,8 @@ class tealogWindow(QWidget):
             self.teaOperate = teaWindow(self.account.text())
             self.pwd.clear()
             self.account.clear()
-            self.teaOperate.show()
             self.hide()
+            self.teaOperate.show()
 
 
 # 学生注册页面
