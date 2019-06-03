@@ -14,5 +14,7 @@ def getTeaInfo(account):
     select m_id,name,gender,build_id,own_phone,birthday
     from manager
     where account_name='%s' '''%(account))
+
+
     data=cur.fetchall()
     return data

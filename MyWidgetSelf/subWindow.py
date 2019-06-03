@@ -3,6 +3,7 @@ from DDL.delete import *
 from DDL.Stu_query2 import *
 from DDL.Stu_query3 import *
 from DDL.Stu_query4 import *
+from DDL.Stu_query5 import *
 from DDL.query import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -17,7 +18,8 @@ from DDL.Tea_query8 import *
 from DDL.Tea_query11 import *
 from DDL.Tea_query10 import *
 from DDL.Tea_query9 import *
-
+from DDL.Stuu_query6 import *
+from DDL.Tea_query12 import *
 # 学生端显示宿舍总体情况
 class firstWindow(QWidget):
     def __init__(self, account, parent=None):
@@ -247,16 +249,17 @@ class forthWindow(QWidget):
         self.birthday.setStyleSheet("background:transparent;border-width:0;border-style:outset")
 
         data=getinfo(self.account)
-        self.id.setText(str(data[0][0]))
-        self.name.setText(str(data[0][1]))
-        self.department_name.setText(str(data[0][2]))
-        self.grade.setText(str(data[0][3]))
-        self.phoneparent.setText(str(data[0][4]))
-        self.phoneself.setText(str(data[0][5]))
-        self.gender.setText(str(data[0][6]))
-        self.bed_id.setText(str(data[0][7]))
-        self.admition_date.setText(str(data[0][8]))
-        self.birthday.setText(str(data[0][9]))
+        if len(data)>0:
+            self.id.setText(str(data[0][0]))
+            self.name.setText(str(data[0][1]))
+            self.department_name.setText(str(data[0][2]))
+            self.grade.setText(str(data[0][3]))
+            self.phoneparent.setText(str(data[0][4]))
+            self.phoneself.setText(str(data[0][5]))
+            self.gender.setText(str(data[0][6]))
+            self.bed_id.setText(str(data[0][7]))
+            self.admition_date.setText(str(data[0][8]))
+            self.birthday.setText(str(data[0][9]))
 
     def iniButton(self):
         self.submit.setGeometry(370, 630, 80, 50)
@@ -286,6 +289,105 @@ class forthWindow(QWidget):
         self.m.setWindowTitle("注意")
         self.m.setText("修改成功")
         self.m.show()
+
+#申请提交
+class fifthWindow(QWidget):
+    def __init__(self,account,parent=None):
+        super(fifthWindow, self).__init__(parent)
+        self.account = account
+        self.pix = QPixmap("./src/image/5.png")
+        self.submit = QPushButton(self)
+        self.setWindow()
+        self.iniLineEdit()
+        self.iniSignalSlot()
+        self.iniButton()
+
+    def setWindow(self):
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.resize(self.pix.size())
+        self.setMask(self.mask())
+
+    def iniLineEdit(self):
+        self.stuid=QLineEdit(self)
+        self.name=QLineEdit(self)
+        self.build=QLineEdit(self)
+        self.room=QLineEdit(self)
+        self.toRoom=QLineEdit(self)
+        self.stuid.setGeometry(180,140,450,30)
+        self.name.setGeometry(180,190,450,30)
+        self.build.setGeometry(180,240,450,30)
+        self.room.setGeometry(180,300,450,30)
+        self.toRoom.setGeometry(180,355,450,30)
+        self.stuid.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.name.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.build.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.room.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+        self.toRoom.setStyleSheet("background:transparent;border-width:0;border-style:outset")
+
+
+    def iniSignalSlot(self):
+        self.submit.clicked.connect(self.query)
+
+    def iniButton(self):
+        self.submit.setGeometry(370,460,80,50)
+        self.submit.setCursor(Qt.PointingHandCursor)
+        self.submit.setStyleSheet("background:transparent;")
+
+    def query(self):
+        if self.stuid.text()=="" or self.name.text()=="" or self.build.text()=="" or self.room.text()=="" or self.toRoom.text()=="":
+            self.m=QMessageBox()
+            self.m.setWindowTitle("注意")
+            self.m.setText("请输入完整信息！")
+            self.m.show()
+        else:
+            data=apply(self.account,self.stuid.text(),self.name.text(),self.build.text(),self.room.text(),self.toRoom.text())
+            if data==0:
+                self.mm=QMessageBox()
+                self.mm.setWindowTitle("注意")
+                self.mm.setText("提交成功！")
+                self.mm.show()
+
+    def paintEvent(self, a0: QPaintEvent) -> None:
+        painter=QPainter(self)
+        painter.drawPixmap(0,0,self.pix.width(),self.pix.height(),self.pix)
+
+class historyWindow(QWidget):
+    def __init__(self,account,parent=None):
+        super(historyWindow,self).__init__(parent)
+        self.account=account
+        self.pix=QPixmap("./src/image/history.png")
+
+        self.setWindow()
+        self.iniTable()
+
+    def setWindow(self):
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.resize(self.pix.size())
+        self.setMask(self.pix.mask())
+
+    def paintEvent(self, a0: QPaintEvent) -> None:
+        painter=QPainter(self)
+        painter.drawPixmap(0,0,self.pix.width(),self.pix.height(),self.pix)
+
+    def iniTable(self):
+        self.table=QTableWidget(self)
+        self.table.setGeometry(10,10,850,600)
+        self.table.setColumnCount(6)
+        self.table.horizontalHeader().setDefaultSectionSize(140)
+        self.table.setHorizontalHeaderLabels(['申请人学号','申请人姓名','所属楼','原房间号','申请房间号','申请时间'])
+        self.showTable()
+
+    def showTable(self):
+        data=showAllStu(self.account)
+        if len(data)>0:
+            self.table.setRowCount(len(data))
+            for i in range(0,len(data)):
+                for j in range(0,6):
+                    self.table.setItem(i,j,QTableWidgetItem(str(data[i][j])))
+
+
 
 
 # 管理员端显示宿舍整体情况
@@ -832,7 +934,9 @@ class managereleventhWindow(QWidget):
         self.account = account
         self.pix = QPixmap("./src/image/m11.png")
         self.setWindow()
+
         self.iniLinEdit()
+
         self.iniButton()
 
     def setWindow(self):
@@ -871,12 +975,13 @@ class managereleventhWindow(QWidget):
         self.birthday.setStyleSheet("background:transparent;border-width:0;border-style:outset")
 
         data=getTeaInfo(self.account)
-        self.tea_id.setText(str(data[0][0]))
-        self.name.setText(str(data[0][1]))
-        self.building.setText(str(data[0][2]))
-        self.phone.setText(str(data[0][3]))
-        self.gender.setText(str(data[0][4]))
-        self.birthday.setText(str(data[0][5]))
+        if len(data)>0:
+            self.tea_id.setText(str(data[0][0]))
+            self.name.setText(str(data[0][1]))
+            self.building.setText(str(data[0][2]))
+            self.phone.setText(str(data[0][3]))
+            self.gender.setText(str(data[0][4]))
+            self.birthday.setText(str(data[0][5]))
 
     def iniButton(self):
         self.submit = QPushButton(self)
@@ -909,3 +1014,50 @@ class managereleventhWindow(QWidget):
                 self.m.setText("修改成功！")
                 self.m.show()
 
+
+class managertwelevthWindow(QWidget):
+    def __init__(self,account,parent=None):
+        super(managertwelevthWindow,self).__init__(parent)
+        self.account=account
+        self.pix=QPixmap("./src/image/m12.png")
+
+        self.setWindow()
+        self.iniTable()
+        self.iniButton()
+
+    def setWindow(self):
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.resize(self.pix.size())
+        self.setMask(self.pix.mask())
+
+    def paintEvent(self, a0: QPaintEvent) -> None:
+        painter=QPainter(self)
+        painter.drawPixmap(0,0,self.pix.width(),self.pix.height(),self.pix)
+
+    def iniTable(self):
+        self.table=QTableWidget(self)
+        self.table.setGeometry(10,10,850,600)
+        self.table.setColumnCount(6)
+        self.table.horizontalHeader().setDefaultSectionSize(140)
+        self.table.setHorizontalHeaderLabels(['申请人学号','申请人姓名','所属楼','原房间号','申请房间号','申请时间'])
+        self.showTable()
+    def iniButton(self):
+        self.submit=QPushButton(self)
+        self.submit.setCursor(Qt.PointingHandCursor)
+        self.submit.setGeometry(360,660,180,40)
+        self.submit.setStyleSheet("background:transparent;")
+        self.submit.clicked.connect(self.deleteAll)
+
+    def showTable(self):
+        data=teaShowAll(self.account)
+        if len(data)>0:
+            self.table.setRowCount(len(data))
+            for i in range(0,len(data)):
+                for j in range(0,6):
+                    self.table.setItem(i,j,QTableWidgetItem(str(data[i][j])))
+
+
+    def deleteAll(self):
+        teaDelete(self.account)
+        self.showTable()
