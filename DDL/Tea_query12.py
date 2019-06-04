@@ -7,6 +7,7 @@ def teaDelete(account):
     select build_id
     from manager
     where account_name='%s')'''%(account))
+    db.commit()
 
 def teaShowAll(account):
     cur.execute('''
