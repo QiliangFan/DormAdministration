@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="DormAdministration@106.14.142.29" uuid="81e4fba8-aa94-40c7-b7a4-9ff1b16dd192">
-      <database-info product="MySQL" version="5.5.62-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.5.62" exact-driver-version="8.0">
+    <data-source name="DormAdministration@106.14.142.29" uuid="b7bbe5cd-c2a5-4893-9583-6d6c4165351e">
+      <database-info product="MySQL" version="5.5.62-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )" dbms="MYSQL" exact-version="5.5.62" exact-driver-version="5.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>db2019</user-name>
-      <introspection-schemas>*:*</introspection-schemas>
+      <introspection-schemas>*:DormAdministration</introspection-schemas>
     </data-source>
   </component>
 </project>

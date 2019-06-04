@@ -120,18 +120,28 @@ class secondWindow(QWidget):
         self.submit.clicked.connect(self.query)
 
     def query(self):
-        building = self.building.text()
-        room = self.room.text()
+        if self.building.text()=="":
+            building=" "
+        else:
+            building = self.building.text()
+        if self.room.text()=="":
+            room=" "
+        else:
+            room = self.room.text()
+
+
+        print(room)
+        print(building)
         data = getStuInfro(building, room)
         length = len(data)
         self.result.setRowCount(length)
-        self.result.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
         for i in range(0, length):
             for j in range(0, 8):
                 if data[i][j] is None:
-                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    self.result.setItem(i, j, QTableWidgetItem(str("")))
                 else:
-                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                    self.result.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 学生端查询本楼成员
@@ -185,13 +195,20 @@ class thirdWindow(QWidget):
         data = getStuByBuildAndName(building, name)
         length = len(data)
         self.result.setRowCount(length)
-        self.result.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        print(data)
+        print(data[0][1])
         for i in range(0, length):
             for j in range(0, 5):
+                print(j)
                 if data[i][j] is None:
-                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    print(data[i][j])
+                    self.result.setItem(i, j, QTableWidgetItem(str("")))
+                    print("?????")
                 else:
-                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                    print(data[i][j])
+                    self.result.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                    print("+++++")
 
 
 # 学生端个人资料面板
@@ -381,10 +398,13 @@ class historyWindow(QWidget):
 
     def showTable(self):
         data=showAllStu(self.account)
+        print(data)
+        print(len(data))
         if len(data)>0:
             self.table.setRowCount(len(data))
             for i in range(0,len(data)):
                 for j in range(0,6):
+                    
                     self.table.setItem(i,j,QTableWidgetItem(str(data[i][j])))
 
 
@@ -465,7 +485,7 @@ class managersecondWindow(QWidget):
         data = GetManagerInfoSameBuilding(self.account)
         length = len(data)
         self.table.setRowCount(length)
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
         for i in range(0, length):
             for j in range(0, 5):
                 if data[i][j] is None:
@@ -502,7 +522,7 @@ class managerthirdWindow(QWidget):
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
         data = getStuInfoSameBuilding(self.account)
         length = len(data)
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
         self.table.setRowCount(length)
         for i in range(0, length):
             for j in range(0, 9):
@@ -540,7 +560,7 @@ class managerforthWindow(QWidget):
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setColumnCount(9)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
 
     def iniLineEdit(self):
         self.room = QLineEdit(self)
@@ -645,7 +665,7 @@ class managersixthWindow(QWidget):
         self.table.setColumnCount(2)
         self.table.verticalHeader().setDefaultSectionSize(30)
         self.table.setHorizontalHeaderLabels(['未满房间号', '剩余床位'])
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
 
         data=getRoomAvaliable(self.account)
         length=len(data)
@@ -689,7 +709,7 @@ class managerseventhWindow(QWidget):
         self.table.setHorizontalHeaderLabels(['房间号', '剩余床位'])
         self.table.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)
         ##不可修改
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
 
     def iniLineEdit(self):
         self.room = QLineEdit(self)
@@ -837,7 +857,7 @@ class managerninthWindow(QWidget):
             self.em.setWindowTitle("注意")
             self.em.setText("该学生没有住宿信息！")
         else:
-            self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            
             length = len(data)
             self.table.setRowCount(length)
             for i in range(0, length):
@@ -899,7 +919,6 @@ class managertenthWindow(QWidget):
         self.table.setColumnWidth(7,120)
         self.table.setColumnWidth(8,120)
         self.table.setHorizontalHeaderLabels(['学号', '姓名', '性别', '学院', '房间号', '床号', '出生日期', '本人电话', '父母电话'])
-        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
     def query(self):
         if self.stuid.text() =="" or self.room.text()=="":

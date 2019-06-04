@@ -1,16 +1,7 @@
 from DDL.account import *
 
-
-def adjust(s_id, room, account):
+def selectAll10(s_id,account):
     cur.execute('''
-    select room_id
-    from student
-    where stu_id='%s'
-    '''%(s_id,))
-    data=cur.fetchall()
-    print(data)
-    if len(data)>0 and str(data[0][0])==room:
-        cur.execute('''
                        select  stu_id,name,gender,dept_name,room_id,bed_id,birthday,own_phone,parent_phone
                        from student
                        where stu_id='%s'
@@ -19,11 +10,10 @@ def adjust(s_id, room, account):
                         from manager
                         where manager.account_name='%s')''' % (s_id, account))
 
-        data = cur.fetchall()
-        return data
+    data = cur.fetchall()
+    return data
 
-
-
+def judgeIsFull(room,account):
     cur.execute('''
     select max_capacity-act_capacity
     from room
@@ -32,8 +22,23 @@ def adjust(s_id, room, account):
     select manager.build_id
     from manager
     where account_name='%s')''' % (room, account))
-    data = cur.fetchall()
-    if data[0][0] == 0:
+    data=cur.fetchall()
+    return data
+
+
+def adjust(s_id, room, account):
+    cur.execute('''
+    select room_id
+    from student
+    where stu_id='%s'
+    '''%(s_id,))
+    data=cur.fetchall()
+    if len(data)>0 and str(data[0][0])==room:
+        data=selectAll10(s_id,account)
+        return data
+    
+    data = judgeIsFull(room,account)
+    if len(data)>0 and data[0][0] == 0:
         return -1  # 已经满了
 
     cur.execute('''
@@ -44,7 +49,7 @@ def adjust(s_id, room, account):
 
     data = cur.fetchall()
 
-    if data[0][0] == 0:
+    if len(data)>0 and data[0][0] == 0:
         flag = 0  # 开始并没有宿舍
     else:
         flag = 1  # 已经有宿舍了
@@ -69,7 +74,6 @@ def adjust(s_id, room, account):
     if flag_room == 1:
         if flag == 0:
             # 安排到指定宿舍后的操作
-            print("+++")
             cur.execute('''
             update student set
             room_id='%s',
@@ -86,6 +90,7 @@ def adjust(s_id, room, account):
              from manager
              where manager.account_name='%s'))
               where stu_id='%s' ''' % (room, account, room,  account,s_id))
+            db.commit()
 
             cur.execute('''
                     update room set act_capacity=act_capacity+1,
@@ -95,6 +100,7 @@ def adjust(s_id, room, account):
                     from manager
                     where account_name='%s')
                     and room.room_id='%s' ''' % (account, room))
+            db.commit()
         # 一开始有宿舍
         else:
             cur.execute('''
@@ -108,6 +114,7 @@ def adjust(s_id, room, account):
             select manager.build_id
             from manager
             where account_name='%s')''' % (s_id, account))
+            db.commit()
 
             data = cur.fetchall()
             if data[0] == 1:
@@ -121,6 +128,7 @@ def adjust(s_id, room, account):
                 select manager.build_id
                 from manager
                 where account_name='%s')''' % (s_id, account))
+                db.commit()
 
                 cur.execute('''
                 update building set
@@ -129,6 +137,7 @@ def adjust(s_id, room, account):
                 select manager.build_id
                 from manager
                 where account_name='%s')''' % (account,))
+                db.commit()
             else:
                 cur.execute('''
                 update room set
@@ -140,6 +149,7 @@ def adjust(s_id, room, account):
                 select manager.build_id
                 from manager
                 where account_name='%s')''' % (s_id, account))
+                db.commit()
 
             # 安排到指定宿舍后的操作
             cur.execute('''
@@ -157,6 +167,7 @@ def adjust(s_id, room, account):
              from manager
              where manager.account_name='%s'))
               where stu_id='%s' ''' % (room, account, room,account, s_id))
+            db.commit()
 
     # 安排的房间最开始没人
     else:
@@ -213,6 +224,7 @@ def adjust(s_id, room, account):
                 where account_name='%s')''' % (account,))
                 db.commit()
             else:
+                
                 cur.execute('''
                update room set
                act_capacity=act_capacity-1

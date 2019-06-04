@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="DormAdministration@106.14.142.29" uuid="81e4fba8-aa94-40c7-b7a4-9ff1b16dd192">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="DormAdministration@106.14.142.29" uuid="b7bbe5cd-c2a5-4893-9583-6d6c4165351e">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://106.14.142.29:3306/DormAdministration</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
         <property name="serverTimezone" value="GMT+8" />
-        <property name="useAffectedRows" value="TRUE" />
       </driver-properties>
     </data-source>
   </component>

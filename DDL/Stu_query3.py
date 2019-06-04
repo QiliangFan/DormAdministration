@@ -7,4 +7,5 @@ def getStuByBuildAndName(build,name):
     where room_build_id='%s'
      and name='%s' '''%(build,name))
     data=cur.fetchall()
+    print(data)
     return data
