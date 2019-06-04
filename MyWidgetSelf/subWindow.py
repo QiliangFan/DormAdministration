@@ -129,9 +129,9 @@ class secondWindow(QWidget):
         for i in range(0, length):
             for j in range(0, 8):
                 if data[i][j] is None:
-                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    self.result.setItem(i, j, QTableWidgetItem(str("")))
                 else:
-                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                    self.result.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 学生端查询本楼成员
@@ -189,9 +189,9 @@ class thirdWindow(QWidget):
         for i in range(0, length):
             for j in range(0, 5):
                 if data[i][j] is None:
-                    self.table.setItem(i, j, QTableWidgetItem(str("")))
+                    self.result.setItem(i, j, QTableWidgetItem(str("")))
                 else:
-                    self.table.setItem(i, j, QTableWidgetItem(str(data[i][j])))
+                    self.result.setItem(i, j, QTableWidgetItem(str(data[i][j])))
 
 
 # 学生端个人资料面板
@@ -381,7 +381,8 @@ class historyWindow(QWidget):
 
     def showTable(self):
         data=showAllStu(self.account)
-        if len(data)>0:
+        print(data)
+        if len(data)>0 and len(data[0])>0:
             self.table.setRowCount(len(data))
             for i in range(0,len(data)):
                 for j in range(0,6):
