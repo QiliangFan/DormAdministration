@@ -979,9 +979,9 @@ class managereleventhWindow(QWidget):
         if len(data)>0:
             self.tea_id.setText(str(data[0][0]))
             self.name.setText(str(data[0][1]))
-            self.building.setText(str(data[0][2]))
-            self.phone.setText(str(data[0][3]))
-            self.gender.setText(str(data[0][4]))
+            self.gender.setText(str(data[0][2]))
+            self.building.setText(str(data[0][3]))
+            self.phone.setText(str(data[0][4]))
             self.birthday.setText(str(data[0][5]))
 
     def iniButton(self):
