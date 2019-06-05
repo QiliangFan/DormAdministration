@@ -6,7 +6,7 @@ def arrangeStuWithoutBed(stuid,room,account):
     from student
     where stu_id='%s' '''%(stuid))
     data=cur.fetchall()
-    if len(data)>0:
+    if len(data)>0 and len(data[0])>0:
         #学生已有床位
         return -1
     else:
